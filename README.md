@@ -1,97 +1,128 @@
-# Weather SPA Vue
+# Weather SPA Chile - Módulo 7
 
-Aplicación de clima desarrollada como SPA utilizando Vue 3, Vue Router y Axios.
+Aplicación SPA desarrollada con Vue 3, Vue Router, Vuex y Axios, basada en una plataforma de consulta climática para ciudades de Chile.
 
-El proyecto recrea la aplicación de clima desarrollada en módulos anteriores, manteniendo ciudades de Chile e incorporando navegación mediante Vue Router, consumo de API externa y visualización dinámica de información meteorológica.
+En esta versión se incorpora un sistema básico de autenticación de usuarios utilizando Vuex para administrar el estado global de la aplicación, junto con rutas protegidas y personalización de contenido según el usuario autenticado.
 
-## Descripción
+## Descripción del sistema de usuarios
 
-La aplicación permite visualizar información climática de distintas ciudades de Chile.
+La aplicación incluye un sistema de autenticación simulado mediante usuarios mock.
 
-Desde la vista principal el usuario puede buscar una ciudad y acceder a su detalle. En la vista de detalle se muestran datos climáticos obtenidos desde la API Open-Meteo, incluyendo temperatura actual, humedad, velocidad del viento, estadísticas semanales y pronóstico de varios días.
+Cada usuario almacena información básica como:
 
-## Vistas del proyecto
+- Nombre
+- Correo electrónico
+- Contraseña
+- Lugares favoritos
+- Preferencia de unidad de temperatura (°C o °F)
 
-### Home
+Al iniciar sesión correctamente, la información del usuario se guarda en Vuex y queda disponible para toda la aplicación.
 
-Vista principal que muestra:
+## Funcionalidades principales
 
-- Listado de ciudades.
-- Buscador mediante v-model.
-- Tarjetas con imágenes de cada ciudad.
-- Navegación hacia la vista detalle.
+### Clima de ciudades chilenas
 
-### Detalle de Ciudad
+- Listado de ciudades de Chile.
+- Búsqueda mediante v-model.
+- Vista de detalle por ciudad.
+- Consumo de API Open-Meteo.
+- Pronóstico y estadísticas climáticas.
 
-Vista dinámica que muestra:
+### Autenticación
 
-- Nombre de la ciudad.
-- Imagen representativa.
-- Coordenadas geográficas.
-- Temperatura actual.
-- Humedad.
-- Velocidad del viento.
-- Estadísticas semanales.
-- Pronóstico semanal.
-- Alerta climática.
+- Inicio de sesión mediante formulario.
+- Validación de credenciales.
+- Mensaje de error para credenciales incorrectas.
+- Estado global administrado con Vuex.
+- Cierre de sesión.
+- Visualización del usuario autenticado en la interfaz.
 
-## Rutas implementadas
+### Personalización por usuario
 
-### Ruta principal
+Cada usuario posee:
 
-/
+- Lista de lugares favoritos.
+- Preferencia de unidad de temperatura.
 
-Muestra el listado completo de ciudades.
+La información se obtiene desde Vuex y se muestra dinámicamente según el usuario autenticado.
 
-### Ruta dinámica
+### Rutas protegidas
 
-/ciudad/:id
+#### /login
 
-Muestra el detalle de la ciudad seleccionada.
+Permite iniciar sesión.
+
+#### /favoritos
+
+Ruta protegida que solo puede ser visitada por usuarios autenticados.
+
+Si un usuario intenta acceder sin iniciar sesión, es redirigido automáticamente a `/login`.
+
+#### /
+
+Página principal de la aplicación.
+
+#### /ciudad/:id
+
+Vista de detalle de la ciudad seleccionada.
 
 ## Tecnologías utilizadas
 
 - Vue 3
 - Vue Router
-- Vite
+- Vuex 4
 - Axios
-- Open-Meteo API
+- Vite
 - JavaScript
 - HTML5
 - CSS3
+- Open-Meteo API
 
-## Funcionalidades implementadas
+## Usuario de prueba
 
-- Aplicación SPA con Vue Router.
-- Navegación entre vistas sin recarga.
-- Consumo de API externa mediante Axios.
-- Uso de v-model para búsqueda.
-- Uso de v-for para renderizar ciudades.
-- Uso de v-if para renderizado condicional.
-- Uso de props dinámicas desde la ruta.
-- Estadísticas climáticas semanales.
-- Pronóstico semanal.
-- Alertas climáticas.
-- Diseño responsivo.
+Correo:
+
+[david@test.com](mailto:david@test.com)
+
+Contraseña:
+
+123456
 
 ## Instalación
 
-1. Clonar o descargar el proyecto.
-2. Abrir la carpeta en Visual Studio Code.
-3. Abrir una terminal en la raíz del proyecto.
+Clonar el repositorio:
+
+```bash
+git clone https://github.com/davidparadarcl/weather-spa-vue-m7.git
+```
 
 Instalar dependencias:
 
+```bash
 npm install
+```
 
-Ejecutar servidor de desarrollo:
+Ejecutar el proyecto:
 
+```bash
 npm run dev
+```
 
-Abrir la URL entregada por Vite, normalmente:
+Abrir en el navegador:
 
-http://localhost:5173/
+```txt
+http://localhost:5173
+```
 
 ## Repositorio GitHub
 
-https://github.com/davidparadarcl/weather-spa-vue.git
+https://github.com/davidparadarcl/weather-spa-vue-m7
+
+## Control de versiones
+
+El proyecto fue versionado utilizando Git y GitHub, incorporando commits descriptivos para cada etapa del desarrollo:
+
+- Version base weather SPA para modulo 7
+- Agrega Vuex y gestión de autenticación
+- Implementa login de usuarios
+- Agregar favoritos y rutas protegidas
