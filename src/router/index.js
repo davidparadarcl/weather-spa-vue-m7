@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import LugarDetailView from "../views/LugarDetailView.vue";
 import LoginView from "../views/LoginView.vue";
+import FavoritosView from "../views/FavoritosView.vue";
 import store from "../store";
 
 const routes = [
@@ -21,6 +22,14 @@ const routes = [
         path: "/login",
         name: "login",
         component: LoginView,
+    },
+    {
+        path: "/favoritos",
+        name: "favoritos",
+        component: FavoritosView,
+        meta: {
+            requiresAuth: true,
+        },
     },
 ];
 
